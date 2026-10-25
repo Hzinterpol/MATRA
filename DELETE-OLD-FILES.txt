@@ -1,0 +1,4 @@
+File lama yang dapat dihapus secara opsional setelah memasang patch v4:
+src/pages/StudentPage.jsx
+
+Jika tidak dihapus, file di atas tidak lagi di-import oleh React; proyek tetap berjalan.

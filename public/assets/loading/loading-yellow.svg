@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="220" height="96" viewBox="40 185 420 132" role="img" aria-label="Tiga titik loading kuning MATRA">
+  <!-- Diturunkan dari loading.lottie: posisi dan rangkaian keyframe sumber dipertahankan; warna diganti #FFDD00. -->
+  <circle cx="123" cy="251" r="24" fill="#FFF0A1">
+    <animate attributeName="r" values="24.0;36.0;24.0;24.0" keyTimes="0;0.333333;0.666667;1" dur="1s" repeatCount="indefinite" calcMode="spline" keySplines="0.333 0 0.667 1;0.333 0 0.667 1;0.333 0 0.667 1"/>
+    <animate attributeName="fill" values="#FFF0A1;#FFDD00;#FFF0A1;#FFF0A1" keyTimes="0;0.333333;0.666667;1" dur="1s" repeatCount="indefinite" calcMode="spline" keySplines="0.333 0 0.667 1;0.333 0 0.667 1;0.333 0 0.667 1"/>
+  </circle>
+  <circle cx="251" cy="251" r="24" fill="#FFF0A1">
+    <animate attributeName="r" values="24.0;24.0;36.0;24.0" keyTimes="0;0.333333;0.666667;1" dur="1s" repeatCount="indefinite" calcMode="spline" keySplines="0.333 0 0.667 1;0.333 0 0.667 1;0.333 0 0.667 1"/>
+    <animate attributeName="fill" values="#FFF0A1;#FFE650;#FFDD00;#FFF0A1" keyTimes="0;0.333333;0.666667;1" dur="1s" repeatCount="indefinite" calcMode="spline" keySplines="0.333 0 0.667 1;0.333 0 0.667 1;0.333 0 0.667 1"/>
+  </circle>
+  <circle cx="379" cy="251" r="24" fill="#FFF0A1">
+    <animate attributeName="r" values="24.0;24.0;24.0;36.0" keyTimes="0;0.333333;0.666667;1" dur="1s" repeatCount="indefinite" calcMode="spline" keySplines="0.333 0 0.667 1;0.333 0 0.667 1;0.333 0 0.667 1"/>
+    <animate attributeName="fill" values="#FFF0A1;#FFF0A1;#FFF0A1;#FFDD00" keyTimes="0;0.333333;0.666667;1" dur="1s" repeatCount="indefinite" calcMode="spline" keySplines="0.333 0 0.667 1;0.333 0 0.667 1;0.333 0 0.667 1"/>
+  </circle>
+</svg>

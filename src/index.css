@@ -1,0 +1,83 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {color-scheme:light;--matra-primary:#006569;--matra-primary-deep:#00494B;--matra-accent:#FFDD00;--matra-surface:#FFFFFF;--matra-surface-muted:#F2F5F7;--matra-surface-teal:#E6F4F3;--matra-text-title:#17324D;--matra-text-body:#334155;--matra-text-muted:#64748B;--matra-border:#DCE5E8;--matra-success:#15803D;--matra-danger:#B42318;--matra-warning:#A16207;--matra-info:#1D4ED8;--matra-neutral:#64748B;--matra-allocated-soft:#67C6BE;}
+html {scroll-behavior:smooth;} body {margin:0;background:#fff;color:#334155;font-family:'Poppins',system-ui,sans-serif;font-size:14px;}*{box-sizing:border-box}button,a,input,select,textarea { -webkit-tap-highlight-color:transparent;}button{cursor:pointer;}button:disabled{cursor:not-allowed;opacity:.55;}input,select,textarea{min-width:0;}a{text-decoration:none;}img{max-width:100%;}::selection{background:#b6e4df;color:#00494B;}:focus-visible{outline:3px solid #00888d;outline-offset:3px;}@media(prefers-reduced-motion:reduce){*,*:before,*:after{scroll-behavior:auto!important;animation-duration:.01ms!important;transition-duration:.01ms!important;}}
+@layer components {
+ .btn { @apply inline-flex min-h-11 items-center justify-center gap-2 rounded-lg border px-5 py-2.5 text-sm font-semibold transition-colors duration-150 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary; }
+ .btn-primary { @apply btn border-primary bg-primary text-white hover:border-deep hover:bg-deep; }
+ .btn-outline { @apply btn border-primary bg-white text-primary hover:bg-mint; }
+ .btn-soft { @apply btn border-transparent bg-mint text-primary hover:bg-[#d4eeeb]; }
+ .btn-light { @apply btn border-line bg-white text-ink hover:bg-canvas; }
+ .btn-danger { @apply btn border-danger bg-danger text-white hover:bg-[#91251b]; }
+ .btn-ghost { @apply btn border-transparent bg-transparent text-muted hover:bg-canvas hover:text-primary; }
+ .field { @apply block h-12 w-full rounded-lg border border-line bg-white px-4 text-sm text-ink outline-none transition focus:border-primary focus:ring-2 focus:ring-[#006569]/10; }
+ .field-soft { @apply field border-transparent bg-canvas; }
+ .field-label { @apply mb-2 block text-xs font-semibold text-ink; }
+ .panel { @apply rounded-2xl border border-line bg-white; }
+ .panel-muted { @apply rounded-xl bg-canvas; }
+ .kicker { @apply text-xs font-semibold uppercase tracking-[.09em] text-primary; }
+ .page-title { @apply text-[28px] font-semibold leading-tight tracking-tight text-ink md:text-[32px]; }
+ .section-title { @apply text-[20px] font-semibold leading-snug text-ink md:text-2xl; }
+ .main-wrap { @apply mx-auto w-full max-w-content px-5 md:px-7 xl:px-0; }
+ .table-wrap { @apply overflow-x-auto rounded-xl border border-line bg-white; }
+ .demo-chip { @apply inline-flex items-center gap-1.5 rounded-full border border-[#c9e2df] bg-[#eff8f6] px-3 py-1 text-[11px] font-semibold text-primary; }
+ .link { @apply font-semibold text-primary hover:underline; }
+}
+.dashboard-bg{background:#F7FAFA;min-height:100vh;}.dashboard-table{width:100%;border-collapse:collapse;white-space:nowrap;}.dashboard-table th{text-align:left;color:#64748B;font-size:11px;text-transform:uppercase;letter-spacing:.045em;background:#F7F9FA;font-weight:600;padding:14px 17px;}.dashboard-table td{font-size:12px;padding:15px 17px;border-top:1px solid #E8EEF0;color:#334155;}.dashboard-table tr:hover td{background:#FBFDFD}.calendar-cell{min-height:74px}.calendar-cell:hover{box-shadow:inset 0 0 0 2px #67C6BE}.text-balance{text-wrap:balance}.hide-scrollbar::-webkit-scrollbar{display:none}.hide-scrollbar{scrollbar-width:none}
+
+/* MATRA UI motion: subtle navigation and purposeful micro-interactions */
+@keyframes matra-page-enter {from{opacity:0;transform:translate3d(0,12px,0)}to{opacity:1;transform:translate3d(0,0,0)}}
+@keyframes matra-modal-backdrop {from{opacity:0}to{opacity:1}}
+@keyframes matra-dialog-enter {from{opacity:0;transform:translate3d(0,12px,0) scale(.975)}to{opacity:1;transform:translate3d(0,0,0) scale(1)}}
+@keyframes matra-slide-down {from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:translateY(0)}}
+.page-transition{animation:matra-page-enter 330ms cubic-bezier(.18,.76,.25,1) both;}
+.nav-accordion{animation:matra-slide-down 220ms ease-out both;}
+.interactive-card{transition:transform 250ms cubic-bezier(.2,.8,.2,1),box-shadow 250ms ease,border-color 250ms ease;will-change:transform;}
+.interactive-card:hover{transform:translateY(-4px);box-shadow:0 15px 32px -16px rgba(0,101,105,.22);border-color:#b9d8d6;}
+.service-icon{transition:transform 240ms cubic-bezier(.2,.8,.2,1);}
+.service-card:hover .service-icon{transform:translateY(-2px) scale(1.08);}
+.btn-primary,.btn-outline,.btn-soft,.btn-danger,.btn-light{transition:transform 180ms ease,background-color 180ms ease,border-color 180ms ease,box-shadow 180ms ease;}
+.btn-primary:hover:not(:disabled),.btn-outline:hover:not(:disabled),.btn-soft:hover:not(:disabled){transform:translateY(-1px);box-shadow:0 7px 16px -10px rgba(0,73,75,.4);}
+.btn-primary:active:not(:disabled),.btn-outline:active:not(:disabled),.btn-soft:active:not(:disabled){transform:translateY(0);}
+.dialog-overlay{animation:matra-modal-backdrop 160ms ease-out both;}
+.dialog-panel{animation:matra-dialog-enter 235ms cubic-bezier(.16,.8,.25,1) both;}
+.nav-link{position:relative;}
+.nav-link::after{content:"";position:absolute;height:2px;left:0;right:100%;bottom:-12px;background:var(--matra-primary);transition:right 200ms ease;}
+.nav-link:hover::after,.nav-link.nav-active::after{right:0;}
+@media(prefers-reduced-motion:reduce){.page-transition,.nav-accordion,.dialog-overlay,.dialog-panel{animation:none!important}.interactive-card:hover,.service-card:hover .service-icon,.btn-primary:hover:not(:disabled),.btn-outline:hover:not(:disabled),.btn-soft:hover:not(:disabled){transform:none!important}.nav-link::after{transition:none!important}}
+
+@keyframes matra-toast-enter{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+.toast-enter{animation:matra-toast-enter 220ms ease-out both;}
+@media(prefers-reduced-motion:reduce){.toast-enter{animation:none!important}}
+
+@keyframes matra-search-enter{from{opacity:0;transform:translateY(-12px) scale(.98)}to{opacity:1;transform:translateY(0) scale(1)}}
+.search-command-enter{animation:matra-search-enter 180ms ease-out both;}
+@media(prefers-reduced-motion:reduce){.search-command-enter{animation:none!important}}
+
+/* MATRA v4 - kalender dan pilihan waktu yang konsisten pada semua platform */
+.matra-picker-trigger {border-color:#DCE5E8;box-shadow:none;transition:border-color .16s,box-shadow .16s,background-color .16s;}
+.matra-picker-trigger:hover:not(:disabled){border-color:#80b9b5;background-color:#fbfefd;}
+.matra-picker-trigger[aria-expanded="true"]{border-color:#006569;box-shadow:0 0 0 3px rgba(0,101,105,.11);}
+.matra-picker {animation:matra-search-enter 170ms cubic-bezier(.16,.8,.25,1) both;}
+.matra-picker-icon{display:inline-flex;align-items:center;justify-content:center;border:1px solid #e0e8eb;border-radius:9px;width:34px;height:34px;color:#006569;transition:background-color .15s;}
+.matra-picker-icon:hover{background:#e6f4f3;}
+.matra-date-cell{display:flex;align-items:center;justify-content:center;aspect-ratio:1/1;width:100%;border-radius:9px;font-size:12px;transition:background-color .15s,color .15s;}
+.matra-date-cell:disabled{opacity:.25;cursor:not-allowed;}
+.matra-time-scroll{height:162px;scrollbar-width:thin;scrollbar-color:#aacdca #f2f5f7;}
+.matra-option-scroll{scrollbar-width:thin;scrollbar-color:#aacdca #fff;}
+.matra-time-choice{display:flex;justify-content:center;align-items:center;width:100%;min-height:34px;border-radius:7px;font-size:12px;font-variant-numeric:tabular-nums;transition:background-color .15s;}
+.matra-picker button:focus-visible{outline:2px solid #006569;outline-offset:1px;}
+@media(prefers-reduced-motion:reduce){.matra-picker{animation:none}}
+
+.matra-picker{max-height:calc(100vh - 24px);overflow-y:auto;}
+
+/* MATRA v6.2 - fokus rapi dan panel pencarian yang tidak terpotong navbar */
+.matra-search-overlay{animation:matra-modal-backdrop 170ms ease-out both;}
+.matra-search-panel{max-height:calc(100dvh - 48px);}
+.matra-search-field:focus-within{border-color:#a4d8d4;background:#f2faf9;}
+.matra-search-input:focus,.matra-search-input:focus-visible{outline:none!important;box-shadow:none!important;}
+.matra-search-input::-webkit-search-cancel-button{-webkit-appearance:none;}
+.matra-search-results{scrollbar-width:thin;scrollbar-color:#b5d3d0 #fff;}
+@media(prefers-reduced-motion:reduce){.matra-search-overlay{animation:none!important;}}

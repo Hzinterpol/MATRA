@@ -1,0 +1,14 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import fs from 'node:fs';
+import path from 'node:path';
+const root=process.cwd();
+const home=fs.readFileSync(path.join(root,'src/components/HomeExperience.jsx'),'utf8');
+const media=fs.readFileSync(path.join(root,'src/components/MediaFrame.jsx'),'utf8');
+const assets=['main.webp','kenali-matra.webp','ruang-kuliah.webp','lab-komputer.webp','layanan-kampus.webp','layanan-akademik.webp','informasi-laboratorium.webp','bantuan-peminjaman-ruangan.webp'];
+test('8 ilustrasi WebP disertakan dan memiliki header RIFF/WEBP',()=>{for(const name of assets){const filepath=path.join(root,'public/assets/ilustrasi',name);assert.ok(fs.statSync(filepath).size>1000,name);const data=fs.readFileSync(filepath);assert.equal(data.subarray(0,4).toString(),'RIFF');assert.equal(data.subarray(8,12).toString(),'WEBP');}});
+test('Hero menggunakan main.webp alih-alih svg yang rusak',()=>{assert.match(home,/import mainIllustration from .*main\.webp/);assert.match(home,/src=\{mainIllustration\}/);assert.doesNotMatch(home,/campus-illustration\.svg/);});
+test('Kenali MATRA menampilkan ilustrasi WebP yang sesuai',()=>{assert.match(home,/import aboutIllustration from .*kenali-matra\.webp/);assert.match(home,/src=\{aboutIllustration\}/);});
+test('MediaFrame memiliki fallback ilustrasi untuk ruang dan lab',()=>{assert.match(media,/room:roomIllustration/);assert.match(media,/lab:labIllustration/);});
+test('MediaFrame memasang ketiga ilustrasi khusus layanan',()=>{for(const name of ['layanan-akademik.webp','informasi-laboratorium.webp','bantuan-peminjaman-ruangan.webp'])assert.ok(media.includes(name));});
+test('Foto user .webp diprioritaskan dan .jpg tetap didukung',()=>{assert.match(media,/\$\{id\}\.webp/);assert.match(media,/replace\(\/\\\.webp\$/);});
