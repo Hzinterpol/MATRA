@@ -90,7 +90,5 @@ Pengujian Node dijalankan melalui `npm test`. `npm run check` menggunakan paket 
 
 ## Keamanan dan sumber data
 
-MATRA v6.2 **belum terhubung ke sistem akademik** dan autentikasi bukan keamanan produksi. Jangan menginput password kampus sungguhan. Jadwal berasal dari referensi Semester 125, sedangkan beberapa data software dan jumlah komputer adalah simulasi yang belum diverifikasi.
-
 
 Pembaruan v6.5: gambar ilustrasi dibundel melalui import Vite; lihat `UPGRADE-v6.5.md`.
