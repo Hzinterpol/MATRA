@@ -47,6 +47,6 @@ test('Tulisan peringatan demo yang mengganggu sudah dihapus dari tampilan PJ dan
 });
 test('Dependensi tidak berubah dan versi patch v6.2 dapat menimpa v6.1',()=>{
  const pkg=JSON.parse(read('package.json'));
- assert.equal(pkg.version,'6.5.0');
+ assert.equal(pkg.version,'6.7.0');
  assert.deepEqual(Object.keys(pkg.dependencies).sort(),['lucide-react','react','react-dom','react-router-dom'].sort());
 });

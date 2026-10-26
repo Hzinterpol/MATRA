@@ -1,3 +1,13 @@
+> **PRIORITAS DESAIN TERBARU — v6.7:** Sidebar Admin memiliki **10 halaman utama**, sidebar PJ **7 halaman utama**. Semua subfitur sejenis muncul sebagai **tab atau dialog** di halaman induknya, bukan halaman repetitif. Tab berganti cepat tanpa menampilkan overlay loading halaman. Referensi aktif: [SITEMAP-v6.7.md](SITEMAP-v6.7.md). Ketentuan dashboard dari v6.6 dan sebelumnya yang bertentangan digantikan oleh bagian ini.
+
+# Adendum MATRA v6.6 — Struktur Navigasi Admin/PJ Terkini
+
+Versi ini menghapus **9 subhalaman Admin** dan **14 subhalaman PJ** dari navigasi dashboard. Kelompok PJ **Jadwal & Konfirmasi** dinamai ulang menjadi **Konfirmasi**. Detail perubahan, nama dan rute yang dipertahankan tercantum pada [`SITEMAP-v6.6.md`](SITEMAP-v6.6.md).
+
+**Aturan pembaruan:** bila dokumen desain/requirement versi terdahulu menyebut halaman yang sudah dihapus, spesifikasi navigasi **v6.6 menggantikannya**. Persyaratan peran, validasi, status slot, aturan alokasi resmi dan persetujuan Admin tetap berlaku. Aksi penting tetap berada dalam halaman yang bertahan (misalnya verifikasi/keputusan pada Antrean Pengajuan dan pembatalan di dalam Detail Pengajuan), bukan pada subhalaman tersendiri.
+
+---
+
 # Addendum desain MATRA v6.2 — Popup pencarian dan login
 
 - Popup pencarian global memakai **React Portal** untuk menghindari pembatasan stacking context dari navbar sticky dan `backdrop-filter`. Backdrop menutupi keseluruhan viewport.

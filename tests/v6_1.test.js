@@ -24,7 +24,7 @@ test('Loading menampilkan tiga titik yang sama untuk awal dan semua rute',()=>{
   assert.ok(loader.includes('useLocation'));
   assert.ok(loader.includes('matra-unified-loading'));
   assert.ok(loader.includes('loading-yellow.svg'));
-  assert.ok(loader.includes('[location.key]'));
+  assert.ok(loader.includes('[location.pathname]'));
   assert.ok(loader.includes('clearTimeout(timeout)'));
 });
 
@@ -40,7 +40,7 @@ test('Loading memakai kuning identitas MATRA dan punya alternatif reduced-motion
 
 test('Seluruh komponen sebelumnya dipertahankan tanpa penambahan dependensi',()=>{
   const pkg=JSON.parse(read('package.json'));
-  assert.equal(pkg.version,'6.5.0');
+  assert.equal(pkg.version,'6.7.0');
   assert.deepEqual(Object.keys(pkg.dependencies).sort(),['lucide-react','react','react-dom','react-router-dom'].sort());
   assert.deepEqual(Object.keys(pkg.devDependencies).sort(),['@vitejs/plugin-react','autoprefixer','postcss','tailwindcss','vite','typescript'].sort());
 });

@@ -9,7 +9,7 @@ import {AdminPage} from './pages/AdminPages';
 import {EmptyState,Button} from './components/UI';
 import LoadingIndicator from './components/LoadingIndicator';
 
-function Protected({role,children}){const {role:current,data}=useApp();const {pathname}=useLocation();if(current!==role)return <Navigate to={{admin:'/login/admin',pj:'/login/pj'}[role]||'/login'} replace state={{from:pathname}}/>;if(role==='pj'&&!data.pjCodeActive&&pathname!=='/pj/kode-tidak-berlaku')return <Navigate to="/pj/kode-tidak-berlaku" replace/>;return children;}
+function Protected({role,children}){const {role:current,data}=useApp();const {pathname}=useLocation();if(current!==role)return <Navigate to={{admin:'/login/admin',pj:'/login/pj'}[role]||'/login'} replace state={{from:pathname}}/>;if(role==='pj'&&!data.pjCodeActive)return <Navigate to="/login/pj?status=nonaktif" replace/>;return children;}
 function RedirectOldSlot(){const [params]=useSearchParams();return <Navigate to={'/ruang-kuliah/'+(params.get('facility')||'gds-607')+'#status-slot'} replace/>;}
 function NotFound(){return <div className="main-wrap py-20"><EmptyState title="Halaman tidak ditemukan" description="Periksa kembali tautan atau kembali ke beranda MATRA." action={<Button to="/">Kembali ke beranda</Button>}/></div>}
 export default function App(){return <><LoadingIndicator/><Routes>
@@ -44,9 +44,33 @@ export default function App(){return <><LoadingIndicator/><Routes>
   <Route path="*" element={<NotFound/>}/>
  </Route>
  <Route path="pj" element={<Protected role="pj"><DashboardLayout as="pj"/></Protected>}>
-  <Route index element={<PJPage/>}/><Route path="pengajuan/:id" element={<PJPage/>}/><Route path="*" element={<PJPage/>}/>
+  <Route index element={<PJPage/>}/><Route path="pengajuan" element={<PJPage/>}/><Route path="pengajuan/:id" element={<PJPage/>}/>
+  {[
+   ['pengingat','/pj/konfirmasi'],['lepas-alokasi','/pj/konfirmasi'],
+   ['detail-kalender','/pj/cari?tab=calendar'],['penolakan','/pj/pengajuan?tab=rejected'],
+   ['kelas','/pj/identitas'],['notifikasi','/pj'],['penugasan','/pj/identitas'],
+   ['jadwal','/pj/cari?tab=calendar'],['pertemuan','/pj/konfirmasi'],['status-alokasi','/pj/konfirmasi'],
+   ['alternatif','/pj/cari'],['riwayat','/pj/pengajuan'],['batalkan','/pj/pengajuan'],
+   ['kode-tidak-berlaku','/login/pj?status=nonaktif'],['mendesak','/pj/lapor'],
+   ['status-perubahan','/pj/konfirmasi'],['keluar','/login']
+  ].map(([path,to])=><Route key={path} path={path} element={<Navigate to={to} replace/>}/>)}
+  <Route path="*" element={<PJPage/>}/>
  </Route>
  <Route path="admin" element={<Protected role="admin"><DashboardLayout as="admin"/></Protected>}>
-  <Route index element={<AdminPage/>}/><Route path="*" element={<AdminPage/>}/>
+  <Route index element={<AdminPage/>}/>
+  {[
+   ['konflik','/admin/kalender?tab=conflicts'],['tinjauan-konflik','/admin/kalender?tab=conflicts'],
+   ['belum-konfirmasi','/admin/konfirmasi-h1'],['laporan-masuk','/admin/laporan'],
+   ['riwayat-peminjaman','/admin/antrean?tab=history'],['alternatif','/admin/antrean?tab=alternatives'],
+   ['ubah-jadwal','/admin/jadwal?tab=add'],['pola-kelas','/admin/jadwal?tab=patterns'],
+   ['ruang-kuliah','/admin/fasilitas?tab=room'],['lab-komputer','/admin/fasilitas?tab=lab'],
+   ['penutupan','/admin/operasional?tab=closures'],['pemindahan','/admin/operasional?tab=move'],
+   ['riwayat-perubahan','/admin/aktivitas?tab=changes'],['riwayat-keputusan','/admin/aktivitas?tab=decisions'],
+   ['menunggu','/admin/antrean'],['verifikasi','/admin/antrean'],['keputusan','/admin/antrean'],
+   ['semester','/admin/penugasan'],['terbitkan-kode','/admin/penugasan'],
+   ['cabut-kode','/admin/penugasan'],['riwayat-penugasan','/admin/penugasan'],
+   ['tindak-lanjut','/admin/laporan'],['notifikasi-terdampak','/admin']
+  ].map(([path,to])=><Route key={path} path={path} element={<Navigate to={to} replace/>}/>)}
+  <Route path="*" element={<AdminPage/>}/>
  </Route>
  </Routes></>}

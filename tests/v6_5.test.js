@@ -30,7 +30,7 @@ test('MediaFrame bundling illustrations and fallback on error',()=>{
  assert.match(s,/!showIllustration/);
 });
 test('Version marker and existing loader remain intact',()=>{
- assert.equal(JSON.parse(read('package.json')).version,'6.5.0');
- assert.match(read('src/components/Layouts.jsx'),/v6\.5/);
+ assert.equal(JSON.parse(read('package.json')).version,'6.7.0');
+ assert.match(read('src/components/Layouts.jsx'),/v6\.7/);
  assert.match(read('src/components/LoadingIndicator.jsx'),/loading-yellow\.svg/);
 });

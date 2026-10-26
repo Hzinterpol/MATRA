@@ -1,3 +1,17 @@
+# MATRA v6.7 — React + Tailwind CSS
+
+Pembaruan v6.7 menyatukan dashboard yang tumpang tindih: **Admin 21 → 10 halaman utama** dan **PJ 11 → 7 halaman utama**. Fitur penunjang dipindahkan ke **tab dan dialog** dalam halaman induknya; detail dinamis pengajuan PJ tetap dapat diakses setelah pengiriman.
+
+Lihat [SITEMAP-v6.7.md](SITEMAP-v6.7.md) untuk struktur aktif dan alasan penggabungan, [UPGRADE-v6.7.md](UPGRADE-v6.7.md) untuk instruksi patch dari v6.6, serta [CHANGELOG.md](CHANGELOG.md) untuk ringkasan perubahan.
+
+**Yang tetap dapat digunakan:** verifikasi/keputusan Admin, riwayat dan alternatif ruang, tambah jadwal/pola kelas, kalender dan konflik, operasional fasilitas dan audit, konfirmasi PJ serta pelepasan eksplisit, pengajuan/pembatalan dan alasan penolakan, pelaporan, dan logout. Halaman publik, Semester 125, ilustrasi WebP serta loading kuning tidak diubah.
+
+---
+
+## Arsip dokumentasi versi sebelumnya
+
+Teks setelah bagian ini menjelaskan perjalanan fitur dari v6.5 ke belakang. Untuk **daftar halaman yang aktif sekarang**, ikuti SITEMAP-v6.7.md; v6.6 disimpan sebagai arsip sejarah fitur.
+
 > Pembaruan v6.4: Loading tiga titik kuning yang sama di seluruh halaman, berdasarkan `loading.lottie`, dan penataan ilustrasi di depan lingkaran dekoratif. Lihat [UPGRADE-v6.4.md](UPGRADE-v6.4.md).
 
 # MATRA v6.5 — Frontend React + Tailwind CSS
@@ -89,6 +103,8 @@ npm run check
 Pengujian Node dijalankan melalui `npm test`. `npm run check` menggunakan paket TypeScript dari `devDependencies`, sehingga membutuhkan `npm install` pada komputer pengguna.
 
 ## Keamanan dan sumber data
+
+MATRA v6.2 **belum terhubung ke sistem akademik** dan autentikasi bukan keamanan produksi. Jangan menginput password kampus sungguhan. Jadwal berasal dari referensi Semester 125, sedangkan beberapa data software dan jumlah komputer adalah simulasi yang belum diverifikasi.
 
 
 Pembaruan v6.5: gambar ilustrasi dibundel melalui import Vite; lihat `UPGRADE-v6.5.md`.

@@ -12,14 +12,14 @@ test('Beranda ditampilkan secara eksplisit sebelum peta menu pada desktop dan mo
     assert.ok(view.indexOf('>Beranda</NavLink>')<view.indexOf('{publicMenu.map'));
     assert.match(view,/n\.to==='\/'\?null/);
   }
-  assert.match(layout,/v6\.5/);
+  assert.match(layout,/v6\.7/);
 });
 
 test('Sistem loading memakai satu animasi yang sama pada awal dan perpindahan halaman',()=>{
   const code=read('src/components/LoadingIndicator.jsx');
   assert.match(code,/LOADING_DURATION=1100/);
   assert.match(code,/loading-yellow\.svg/);
-  assert.match(code,/\[location\.key\]/);
+  assert.match(code,/\[location\.pathname\]/);
   assert.match(code,/clearTimeout\(timeout\)/);
   assert.doesNotMatch(code,/matra-route-progress|matra-preloader/);
 });

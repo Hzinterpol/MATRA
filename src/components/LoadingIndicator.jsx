@@ -12,6 +12,7 @@ export default function LoadingIndicator(){
   const [loading,setLoading]=useState(()=>!reduceMotion());
   const [sequence,setSequence]=useState(0);
 
+  // Tab dashboard memakai parameter query; jangan tampilkan overlay 1,1 dtk hanya karena berpindah tab.
   useEffect(()=>{
     if(reduceMotion()){
       setLoading(false);
@@ -22,7 +23,7 @@ export default function LoadingIndicator(){
     const timeout=window.setTimeout(()=>setLoading(false),LOADING_DURATION);
     // Cleanup aman ketika StrictMode mengulang efek atau navigasi berturut-turut.
     return ()=>window.clearTimeout(timeout);
-  },[location.key]);
+  },[location.pathname]);
 
   if(!loading)return null;
   return <div key={sequence} className="matra-unified-loading" role="status" aria-label="Memuat halaman MATRA" aria-live="polite">

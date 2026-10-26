@@ -1,9 +1,9 @@
 {
   "name": "matra-fmipa-unj",
   "private": true,
-  "version": "6.5.0",
+  "version": "6.7.0",
   "type": "module",
-  "description": "MATRA v6.5 - WebP dibundel langsung lewat Vite dan disertakan ulang pada patch untuk mencegah gambar hilang.",
+  "description": "MATRA v6.7 - Dashboard PJ dan Admin terkonsolidasi tanpa halaman berulang.",
   "scripts": {
     "dev": "vite --host 0.0.0.0",
     "build": "vite build",

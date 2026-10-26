@@ -15,14 +15,14 @@ test('Intro dan perpindahan memakai durasi dan visual yang identik',()=>{
  const src=read('src/components/LoadingIndicator.jsx');
  assert.match(src,/LOADING_DURATION=1100/);
  assert.match(src,/src="\/assets\/loading\/loading-yellow.svg"/);
- assert.match(src,/\[location\.key\]/);
+ assert.match(src,/\[location\.pathname\]/);
  assert.match(src,/setLoading\(true\)/);
  assert.match(src,/setLoading\(false\)/);
  assert.doesNotMatch(src,/route-progress|preloader-ring|preloader-brand|NAV_DURATION|INTRO_DURATION/);
 });
 test('Animasi loading tidak memerlukan library tambahan',()=>{
  const pkg=JSON.parse(read('package.json'));
- assert.equal(pkg.version,'6.5.0');
+ assert.equal(pkg.version,'6.7.0');
  assert.deepEqual(Object.keys(pkg.dependencies).sort(),['lucide-react','react','react-dom','react-router-dom'].sort());
  assert.match(read('src/styles/loading.css'),/prefers-reduced-motion/);
 });
@@ -39,5 +39,5 @@ test('Tidak ada garis progress lama atau logo pada overlay baru',()=>{
  const src=read('src/components/LoadingIndicator.jsx');
  assert.doesNotMatch(css,/matra-route-progress|matra-intro-track|matra-preloader-ring/);
  assert.doesNotMatch(src,/matra-logo.svg/);
- assert.match(read('src/components/Layouts.jsx'),/v6\.5/);
+ assert.match(read('src/components/Layouts.jsx'),/v6\.7/);
 });

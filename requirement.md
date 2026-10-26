@@ -1,3 +1,23 @@
+> **AMENDEMEN KEBUTUHAN v6.7 (menggantikan daftar submenu dashboard versi sebelumnya):**
+>
+> - **FR-V67-01:** Sidebar Admin menampilkan 10 tujuan halaman unik; antrean/riwayat, jadwal/form/pola, kalender/konflik, fasilitas, operasional, dan audit menggunakan tab berbasis URL.
+> - **FR-V67-02:** Sidebar PJ menampilkan 7 tujuan halaman unik; pengingat H-1 terintegrasi, konfirmasi dan pelepasan tetap tindakan berbeda dalam satu halaman, pencarian/kalender dan daftar/status pengajuan digabung.
+> - **FR-V67-03:** Rincian pengajuan PJ tetap dapat diakses dari `/pj/pengajuan/:id`; alasan penolakan dan pembatalan hanya dilakukan pada detail yang sesuai.
+> - **FR-V67-04:** Semua rute lama diarahkan ke induk/tab yang relevan; jangan menyajikan halaman mati, konten duplikat, atau tombol yang mengarah ke submenu terhapus.
+> - **FR-V67-05:** Persetujuan Admin, pelepasan alokasi, perubahan jadwal, tindak lanjut laporan dan audit tetap dijalankan melalui fungsi validasi yang sebelumnya ada.
+> - **NFR-V67-01:** Tidak mengubah data jadwal, identitas warna, jenis animasi loading, WebP, login, maupun dependensi; pengujian regresi lama harus tetap lulus setelah ekspektasi menu lama diperbarui.
+> - **NFR-V67-02:** Loading tiga titik kuning digunakan saat berpindah halaman (`pathname`), tetapi tidak pada tab yang hanya mengubah parameter query.
+>
+> Lihat [SITEMAP-v6.7.md](SITEMAP-v6.7.md) untuk daftar menu final.
+
+# Adendum MATRA v6.6 — Struktur Navigasi Admin/PJ Terkini
+
+Versi ini menghapus **9 subhalaman Admin** dan **14 subhalaman PJ** dari navigasi dashboard. Kelompok PJ **Jadwal & Konfirmasi** dinamai ulang menjadi **Konfirmasi**. Detail perubahan, nama dan rute yang dipertahankan tercantum pada [`SITEMAP-v6.6.md`](SITEMAP-v6.6.md).
+
+**Aturan pembaruan:** bila dokumen desain/requirement versi terdahulu menyebut halaman yang sudah dihapus, spesifikasi navigasi **v6.6 menggantikannya**. Persyaratan peran, validasi, status slot, aturan alokasi resmi dan persetujuan Admin tetap berlaku. Aksi penting tetap berada dalam halaman yang bertahan (misalnya verifikasi/keputusan pada Antrean Pengajuan dan pembatalan di dalam Detail Pengajuan), bukan pada subhalaman tersendiri.
+
+---
+
 # Addendum requirement MATRA v6.2
 
 - REQ-SEARCH-01: modal pencarian harus muncul di atas semua lapisan halaman dan backdrop menutup viewport seluruhnya.

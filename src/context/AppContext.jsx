@@ -70,7 +70,7 @@ export function AppProvider({children}){
     if(role!=='pj')return {ok:false,message:'Akses PJ diperlukan.'};
     const req=data.requests.find(r=>r.id===id);
     if(!req||req.status!=='Menunggu Keputusan')return {ok:false,message:'Prototipe hanya mengizinkan pembatalan pengajuan yang masih menunggu keputusan.'};
-    setData(d=>({...d,requests:d.requests.map(x=>x.id===id?{...x,status:'Dibatalkan'}:x),audit:logAction(d.audit,'PJ Demo','Membatalkan pengajuan',id),notices:notice(d.notices,'admin',`${id} dibatalkan oleh PJ.`,'/admin/riwayat-peminjaman')}));
+    setData(d=>({...d,requests:d.requests.map(x=>x.id===id?{...x,status:'Dibatalkan'}:x),audit:logAction(d.audit,'PJ Demo','Membatalkan pengajuan',id),notices:notice(d.notices,'admin',`${id} dibatalkan oleh PJ.`,'/admin/antrean?tab=history')}));
     notify(`${id} dibatalkan. Riwayat tetap tersimpan.`);return {ok:true};
   };
   const decideRequest=(id,decision,reason='')=>{
@@ -96,14 +96,14 @@ export function AppProvider({children}){
   const resolveIssue=(id,text)=>{
     if(role!=='admin')return {ok:false,message:'Akses admin diperlukan.'};
     if(!text?.trim())return {ok:false,message:'Catatan tindak lanjut diperlukan.'};
-    setData(d=>({...d,issues:d.issues.map(x=>x.id===id?{...x,status:'Ditindaklanjuti',followup:text}:x),audit:logAction(d.audit,'Admin Demo','Menindaklanjuti laporan',id+' - '+text),notices:notice(d.notices,'pj',`Laporan ${id} telah ditindaklanjuti.`,`/pj/notifikasi`)}));notify(`${id} telah ditindaklanjuti.`);return {ok:true};
+    setData(d=>({...d,issues:d.issues.map(x=>x.id===id?{...x,status:'Ditindaklanjuti',followup:text}:x),audit:logAction(d.audit,'Admin Demo','Menindaklanjuti laporan',id+' - '+text),notices:notice(d.notices,'pj',`Laporan ${id} telah ditindaklanjuti.`,`/pj/identitas`)}));notify(`${id} telah ditindaklanjuti.`);return {ok:true};
   };
   const addClosure=(payload)=>{
     if(role!=='admin')return {ok:false,message:'Akses admin diperlukan.'};
     if(!payload.facilityId||!payload.date||!isValidInterval(payload.start,payload.end)||!payload.reason)return {ok:false,message:'Isi ruangan, tanggal, waktu, dan alasan penutupan.'};
     const id=nextNumber(data.closures,'CL-');
     const conflicts=data.allocations.filter(a=>a.active&&a.facilityId===payload.facilityId&&a.date===payload.date).length;
-    setData(d=>({...d,closures:[...d.closures,{...payload,id}],audit:logAction(d.audit,'Admin Demo','Penutupan ruangan',`${id}: ${payload.reason}`),notices:notice(d.notices,'pj',`Terdapat pembaruan operasional ruang ${payload.facilityId}.`,'/pj/notifikasi')}));
+    setData(d=>({...d,closures:[...d.closures,{...payload,id}],audit:logAction(d.audit,'Admin Demo','Penutupan ruangan',`${id}: ${payload.reason}`),notices:notice(d.notices,'pj',`Terdapat pembaruan operasional ruang ${payload.facilityId}.`,'/pj/identitas')}));
     notify(`Penutupan tercatat.${conflicts?' Periksa potensi konflik dengan alokasi aktif.':''}`);return {ok:true,id};
   };
   const addSchedule=(payload)=>{
@@ -121,7 +121,7 @@ export function AppProvider({children}){
     if(a.facilityId===newFacilityId)return {ok:false,message:'Pilih ruangan tujuan yang berbeda.'};
     const s=getStatus(data,newFacilityId,a.date,a.start,a.end);
     if(s.label!=='Tersedia')return {ok:false,message:`Ruangan tujuan berstatus ${s.label}, pemindahan ditolak.`};
-    setData(d=>({...d,allocations:d.allocations.map(x=>x.id===id?{...x,facilityId:newFacilityId}:x),meetings:d.meetings.map(x=>x.allocationId===id?{...x,facilityId:newFacilityId}:x),audit:logAction(d.audit,'Admin Demo','Memindahkan alokasi',`${id} menuju ${newFacilityId}`),notices:notice(d.notices,'pj',`Alokasi ${id} dipindahkan ke ruangan baru oleh admin demo.`,'/pj/jadwal')}));
+    setData(d=>({...d,allocations:d.allocations.map(x=>x.id===id?{...x,facilityId:newFacilityId}:x),meetings:d.meetings.map(x=>x.allocationId===id?{...x,facilityId:newFacilityId}:x),audit:logAction(d.audit,'Admin Demo','Memindahkan alokasi',`${id} menuju ${newFacilityId}`),notices:notice(d.notices,'pj',`Alokasi ${id} dipindahkan ke ruangan baru oleh admin demo.`,'/pj/cari?tab=calendar')}));
     notify(`Alokasi ${id} dipindahkan ke ${newFacilityId} pada data simulasi.`);return {ok:true};
   };
   const setClassPattern=(id,pattern)=>{if(role!=='admin')return {ok:false};setData(d=>({...d,classPatterns:{...d.classPatterns,[id]:pattern},audit:logAction(d.audit,'Admin Demo','Mengubah pola kelas',`${id}: ${pattern}`)}));notify('Pola kelas diperbarui dalam simulasi.');return {ok:true};};

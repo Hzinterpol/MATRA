@@ -13,30 +13,26 @@ export const publicMenu = [
     ['Direktori Layanan Kampus','/layanan-kampus'],['Detail Layanan','/layanan-kampus/layanan-akademik'],
     ['Pusat Login','/login'],['Sebagai Publik','/'],['Masuk sebagai PJ','/login/pj'],['Login Admin','/login/admin'],['Petunjuk Peminjaman','/petunjuk-peminjaman'] ] }
 ];
+// MATRA v6.7: satu halaman per tugas; tampilan pendukung digabung sebagai tab atau dialog.
 export const pjMenu = [
-  {label:'Dashboard PJ', icon:'layout-dashboard',items:[
-    ['Beranda PJ','/pj'],['Kelas Tanggung Jawab','/pj/kelas'],['Pengingat H-1','/pj/pengingat'],['Notifikasi','/pj/notifikasi'],['Info Penugasan','/pj/penugasan']]},
-  {label:'Jadwal & Konfirmasi',icon:'calendar-days',items:[
-    ['Jadwal Saya','/pj/jadwal'],['Detail Pertemuan','/pj/pertemuan'],['Konfirmasi Pelaksanaan','/pj/konfirmasi'],['Lepaskan Alokasi','/pj/lepas-alokasi'],['Status Alokasi','/pj/status-alokasi']]},
-  {label:'Cari & Pinjam',icon:'search',items:[
-    ['Cari Ruang / Lab','/pj/cari'],['Detail & Kalender','/pj/detail-kalender'],['Formulir Pengajuan','/pj/ajukan'],['Pilihan Alternatif','/pj/alternatif'],['Lapor Ketidaksesuaian','/pj/lapor']]},
-  {label:'Pengajuan Saya',icon:'clipboard-list',items:[
-    ['Pengajuan Aktif','/pj/pengajuan'],['Detail Pengajuan','/pj/pengajuan/REQ-001'],['Riwayat Pengajuan','/pj/riwayat'],['Alasan Penolakan','/pj/penolakan'],['Batalkan Pengajuan','/pj/batalkan']]},
-  {label:'Akses & Dukungan',icon:'shield-check',items:[
-    ['Identitas & Penugasan','/pj/identitas'],['Kode Tidak Berlaku','/pj/kode-tidak-berlaku'],['Pengajuan Mendesak','/pj/mendesak'],['Status Perubahan','/pj/status-perubahan'],['Keluar Dashboard PJ','/pj/keluar']]}
+ {label:'Dashboard PJ',icon:'layout-dashboard',items:[['Beranda PJ','/pj']]},
+ {label:'Konfirmasi',icon:'calendar-days',items:[['Konfirmasi & Pelepasan','/pj/konfirmasi']]},
+ {label:'Cari & Pinjam',icon:'search',items:[
+  ['Cari Ruang & Kalender','/pj/cari'],['Ajukan Peminjaman','/pj/ajukan']]},
+ {label:'Pengajuan Saya',icon:'clipboard-list',items:[['Daftar & Status Pengajuan','/pj/pengajuan']]},
+ {label:'Laporan & Akun',icon:'shield-check',items:[
+  ['Lapor Ketidaksesuaian','/pj/lapor'],['Identitas & Akses','/pj/identitas']]}
 ];
 export const adminMenu = [
-  {label:'Beranda Admin',icon:'layout-dashboard',items:[
-    ['Ringkasan Dashboard','/admin'],['Pengajuan Menunggu','/admin/menunggu'],['Konflik Jadwal','/admin/konflik'],['Konfirmasi H-1','/admin/konfirmasi-h1'],['Laporan Masuk','/admin/laporan-masuk']]},
-  {label:'Peminjaman',icon:'clipboard-list',items:[
-    ['Antrean Pengajuan','/admin/antrean'],['Detail & Verifikasi','/admin/verifikasi'],['Keputusan Pengajuan','/admin/keputusan'],['Riwayat Pengajuan','/admin/riwayat-peminjaman'],['Alternatif & Tindak Lanjut','/admin/alternatif']]},
-  {label:'Jadwal & Alokasi',icon:'calendar-days',items:[
-    ['Daftar Jadwal Resmi','/admin/jadwal'],['Tambah / Ubah Jadwal','/admin/ubah-jadwal'],['Pola Tiap Kelas','/admin/pola-kelas'],['Kalender Bersama','/admin/kalender'],['Tinjauan Konflik','/admin/tinjauan-konflik']]},
-  {label:'Kelola Fasilitas',icon:'building-2',items:[
-    ['Daftar Ruang Kuliah','/admin/ruang-kuliah'],['Daftar Lab Komputer','/admin/lab-komputer'],['Penutupan Ruang','/admin/penutupan'],['Pemindahan Alokasi','/admin/pemindahan'],['Riwayat Perubahan','/admin/riwayat-perubahan']]},
-  {label:'PJ & Kode Akses',icon:'users',items:[
-    ['Daftar Penugasan PJ','/admin/penugasan'],['Semester & Masa Aktif','/admin/semester'],['Terbitkan Kode Unik','/admin/terbitkan-kode'],['Ganti / Cabut Kode','/admin/cabut-kode'],['Riwayat Penugasan','/admin/riwayat-penugasan']]},
-  {label:'Laporan & Tindak Lanjut',icon:'file-warning',items:[
-    ['PJ Belum Konfirmasi','/admin/belum-konfirmasi'],['Laporan Ketidaksesuaian','/admin/laporan'],['Detail Tindak Lanjut','/admin/tindak-lanjut'],['Notifikasi Terdampak','/admin/notifikasi-terdampak'],['Riwayat Keputusan','/admin/riwayat-keputusan']]}
+ {label:'Beranda Admin',icon:'layout-dashboard',items:[['Ringkasan Dashboard','/admin']]},
+ {label:'Peminjaman',icon:'clipboard-list',items:[['Pengajuan & Riwayat','/admin/antrean']]},
+ {label:'Jadwal & Alokasi',icon:'calendar-days',items:[
+  ['Jadwal & Pola Kelas','/admin/jadwal'],['Kalender & Konflik','/admin/kalender']]},
+ {label:'Kelola Fasilitas',icon:'building-2',items:[
+  ['Daftar Fasilitas','/admin/fasilitas'],['Operasional Ruang','/admin/operasional'],
+  ['Riwayat Aktivitas','/admin/aktivitas']]},
+ {label:'PJ & Kelola Akses',icon:'users',items:[['Daftar Penugasan PJ','/admin/penugasan']]},
+ {label:'Monitoring & Laporan',icon:'file-warning',items:[
+  ['Konfirmasi H-1','/admin/konfirmasi-h1'],['Laporan Ketidaksesuaian','/admin/laporan']]}
 ];
-export const flatRoutes = (menu) => menu.flatMap(group => group.items.map(([label,to]) => ({ label, to, group:group.label })));
+export const flatRoutes = menu=>menu.flatMap(group=>group.items.map(([label,to])=>({label,to,group:group.label})));
